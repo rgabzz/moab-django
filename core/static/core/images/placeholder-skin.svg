@@ -1,0 +1,17 @@
+<svg viewBox="0 0 500 625" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#12305A"/>
+      <stop offset="100%" stop-color="#0A1B33"/>
+    </linearGradient>
+  </defs>
+  <rect width="500" height="625" fill="url(#bgGrad)"/>
+  <rect x="24" y="24" width="452" height="577" rx="24" fill="none" stroke="#5EA0FF" stroke-width="3" stroke-dasharray="12 10"/>
+  <g stroke="#AFC4E8" stroke-width="3" fill="none">
+    <circle cx="250" cy="270" r="46"/>
+    <path d="M250 270 m-20 20 l14 -20 l12 14 l16 -22 l18 26" />
+  </g>
+  <text x="250" y="380" text-anchor="middle" font-family="sans-serif" font-size="24" font-weight="700" fill="#FFFFFF">IMAGEM DA SKIN</text>
+  <text x="250" y="412" text-anchor="middle" font-family="sans-serif" font-size="15" fill="#AFC4E8">Substitua este arquivo por</text>
+  <text x="250" y="434" text-anchor="middle" font-family="sans-serif" font-size="15" fill="#AFC4E8">sua própria imagem</text>
+</svg>

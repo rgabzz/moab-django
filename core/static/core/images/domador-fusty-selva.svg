@@ -1,0 +1,88 @@
+<svg viewBox="0 0 500 625" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#12305A"/>
+      <stop offset="100%" stop-color="#0A1B33"/>
+    </linearGradient>
+    <linearGradient id="furGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2E6BFF"/>
+      <stop offset="100%" stop-color="#173B9E"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#5EA0FF" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#5EA0FF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="500" height="625" fill="url(#bgGrad)"/>
+  <circle cx="250" cy="230" r="230" fill="url(#glow)"/>
+
+  <!-- confete decorativo -->
+  <g fill="#FFFFFF" opacity="0.85">
+    <circle cx="70" cy="90" r="6"/>
+    <circle cx="430" cy="120" r="5"/>
+    <circle cx="60" cy="480" r="5"/>
+    <circle cx="440" cy="500" r="6"/>
+  </g>
+  <g fill="#5EA0FF" opacity="0.8">
+    <rect x="95" y="150" width="8" height="8" transform="rotate(20 99 154)"/>
+    <rect x="405" y="200" width="8" height="8" transform="rotate(-15 409 204)"/>
+    <rect x="80" y="420" width="8" height="8" transform="rotate(35 84 424)"/>
+  </g>
+
+  <!-- corpo -->
+  <ellipse cx="250" cy="470" rx="150" ry="120" fill="url(#furGrad)"/>
+
+  <!-- pernas -->
+  <ellipse cx="175" cy="580" rx="45" ry="35" fill="#173B9E"/>
+  <ellipse cx="325" cy="580" rx="45" ry="35" fill="#173B9E"/>
+
+  <!-- barriga -->
+  <ellipse cx="250" cy="440" rx="90" ry="80" fill="#E7EEFB"/>
+
+  <!-- braços -->
+  <ellipse cx="90" cy="380" rx="55" ry="110" fill="url(#furGrad)" transform="rotate(-14 90 380)"/>
+  <ellipse cx="410" cy="380" rx="55" ry="110" fill="url(#furGrad)" transform="rotate(14 410 380)"/>
+
+  <!-- mãos -->
+  <circle cx="55" cy="470" r="40" fill="#E7EEFB"/>
+  <circle cx="445" cy="470" r="40" fill="#E7EEFB"/>
+
+  <!-- cabeça -->
+  <ellipse cx="250" cy="240" rx="140" ry="130" fill="url(#furGrad)"/>
+
+  <!-- orelhas -->
+  <circle cx="120" cy="200" r="42" fill="url(#furGrad)"/>
+  <circle cx="380" cy="200" r="42" fill="url(#furGrad)"/>
+  <circle cx="120" cy="200" r="20" fill="#0A1B33"/>
+  <circle cx="380" cy="200" r="20" fill="#0A1B33"/>
+
+  <!-- focinho -->
+  <ellipse cx="250" cy="290" rx="95" ry="75" fill="#E7EEFB"/>
+
+  <!-- olhos -->
+  <ellipse cx="205" cy="230" rx="24" ry="28" fill="#FFFFFF"/>
+  <ellipse cx="295" cy="230" rx="24" ry="28" fill="#FFFFFF"/>
+  <circle cx="209" cy="236" r="11" fill="#0A1B33"/>
+  <circle cx="291" cy="236" r="11" fill="#0A1B33"/>
+  <circle cx="212" cy="232" r="3" fill="#FFFFFF"/>
+  <circle cx="294" cy="232" r="3" fill="#FFFFFF"/>
+
+  <!-- sobrancelhas -->
+  <path d="M175 195 Q205 175 235 195" stroke="#0A1B33" stroke-width="8" fill="none" stroke-linecap="round"/>
+  <path d="M265 195 Q295 175 325 195" stroke="#0A1B33" stroke-width="8" fill="none" stroke-linecap="round"/>
+
+  <!-- narinas -->
+  <ellipse cx="232" cy="300" rx="7" ry="10" fill="#0A1B33"/>
+  <ellipse cx="268" cy="300" rx="7" ry="10" fill="#0A1B33"/>
+
+  <!-- boca / sorriso -->
+  <path d="M195 320 Q250 365 305 320" stroke="#0A1B33" stroke-width="7" fill="none" stroke-linecap="round"/>
+
+  <!-- estrela peitoral (identidade da loja, não é logo de terceiros) -->
+  <g transform="translate(250 440)">
+    <path d="M0 -34 L9 -10 L34 -10 L14 5 L21 30 L0 15 L-21 30 L-14 5 L-34 -10 L-9 -10 Z" fill="#5EA0FF"/>
+  </g>
+
+  <text x="250" y="600" text-anchor="middle" font-family="'Fredoka', sans-serif" font-size="26" font-weight="700" fill="#FFFFFF">EDIÇÃO SELVA AZUL</text>
+</svg>

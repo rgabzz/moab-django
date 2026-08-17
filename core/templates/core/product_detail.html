@@ -1,0 +1,132 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block title %}{{ product.name }} — MOAB{% endblock %}
+
+{% block content %}
+
+  <section class="product-page">
+    <div class="wrap">
+
+      <div class="breadcrumb">
+        <a href="{% url 'core:index' %}">Início</a>
+        <span>/</span>
+        <a href="{% url 'core:index' %}#produtos">Produtos</a>
+        <span>/</span>
+        <span class="current">{{ product.name }}</span>
+      </div>
+
+      <div class="product-grid">
+
+        {% if product.has_skins %}
+        <div class="skin-stage product-media">
+          {% for skin in product.skins %}
+          <img src="{% static skin.image %}" alt="{{ skin.alt }}" class="skin-img{% if forloop.first %} active{% endif %}" data-skin="{{ skin.key }}">
+          {% endfor %}
+          <span class="badge {{ product.badge_class }}">{{ product.badge }}</span>
+          <div class="skin-stage-badge" id="skinBadge">skin: {{ product.skins.0.name|lower }}</div>
+        </div>
+        {% else %}
+        <div class="product-media">
+          <span class="badge {{ product.badge_class }}">{{ product.badge }}</span>
+          <img src="{% static product.image %}" alt="{{ product.alt }}">
+        </div>
+        {% endif %}
+
+        <div class="product-info">
+          <span class="tag">{{ product.eyebrow }}</span>
+          <h1 id="skinName">{{ product.name }}</h1>
+          <p class="product-tagline" id="skinDesc">{{ product.description }}</p>
+
+          {% if product.has_skins %}
+          <div class="skin-swatches">
+            {% for skin in product.skins %}
+            <button class="swatch{% if forloop.first %} active{% endif %}" data-skin="{{ skin.key }}">
+              <img src="{% static skin.image %}" alt="Miniatura skin {{ skin.name }}">
+              <span>{{ skin.name }}</span>
+            </button>
+            {% endfor %}
+          </div>
+          {% endif %}
+
+          <div class="product-price-block">
+            <div class="price price-lg">{{ product.price }} <small>à vista</small></div>
+            <button type="button" class="btn btn-primary btn-buy" disabled title="Loja ainda não tem carrinho — em breve!">
+              Comprar agora
+            </button>
+          </div>
+          <p class="buy-note">🛒 Carrinho de compras chegando em breve. Por enquanto, essa página é só pra conferir os detalhes do produto.</p>
+
+          <div class="specs-table">
+            {% for label, value in product.specs %}
+            <div class="specs-row">
+              <span class="specs-label">{{ label }}</span>
+              <span class="specs-value">{{ value }}</span>
+            </div>
+            {% endfor %}
+          </div>
+
+          {% if product.includes %}
+          <div class="includes-block">
+            <h4>O que vem na caixa</h4>
+            <ul>
+              {% for item in product.includes %}
+              <li>{{ item }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {% if outros_produtos %}
+  <section class="cross-sell">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <span class="tag">Não fica só nesse</span>
+          <h2>Outros macacos da linha</h2>
+        </div>
+      </div>
+      <div class="grid-products">
+        {% for p in outros_produtos %}
+        <a class="card" href="{% url 'core:product_detail' slug=p.slug %}">
+          <div class="card-media">
+            <span class="badge {{ p.badge_class }}">{{ p.badge }}</span>
+            <img src="{% static p.image %}" alt="{{ p.alt }}">
+          </div>
+          <div class="card-body">
+            <h3>{{ p.name }}</h3>
+            <p>{{ p.tagline }}</p>
+            <div class="card-price-row">
+              <div class="price">{{ p.price }} <small>à vista</small></div>
+              <div class="icon-btn">+</div>
+            </div>
+          </div>
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+  {% endif %}
+
+{% endblock %}
+
+{% block skin_data_script %}
+{% if product.has_skins %}
+<script>
+  // Dados das skins deste produto, pra alimentar o mesmo seletor usado na home.
+  window.skinData = {
+    {% for skin in product.skins %}
+    "{{ skin.key }}": {
+      name: "{{ skin.name|escapejs }}",
+      desc: "{{ skin.desc|escapejs }}",
+      badge: "skin: {{ skin.name|lower|escapejs }}"
+    }{% if not forloop.last %},{% endif %}
+    {% endfor %}
+  };
+</script>
+{% endif %}
+{% endblock %}

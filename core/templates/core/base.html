@@ -1,0 +1,103 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{% block title %}MOAB — Macaco de Auxílio a Balões{% endblock %}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'core/css/style.css' %}">
+{% block extra_head %}{% endblock %}
+</head>
+<body>
+
+<div class="ticker">
+  <div class="ticker-track">
+    <span>🍌 FRETE BANANA GRÁTIS ACIMA DE R$ 150</span>
+    <span>🎈 TROCA DE SKIN GRÁTIS NO PRIMEIRO MACACO</span>
+    <span>🐒 NOVIDADE: TACK ZONE X-5 CHEGOU</span>
+    <span>🔥 MACACO FOGUETEIRO — EDIÇÃO FESTA JUNINA</span>
+    <span>🍌 FRETE BANANA GRÁTIS ACIMA DE R$ 150</span>
+    <span>🎈 TROCA DE SKIN GRÁTIS NO PRIMEIRO MACACO</span>
+    <span>🐒 NOVIDADE: TACK ZONE X-5 CHEGOU</span>
+    <span>🔥 MACACO FOGUETEIRO — EDIÇÃO FESTA JUNINA</span>
+  </div>
+</div>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="{% url 'core:index' %}" class="logo">
+      <img src="{% static 'core/images/logo-moab.png' %}" alt="Logo MOAB — Macacos de Auxílio a Balões" class="logo-img">
+      <span>MOAB<small>MACACOS DE AUXÍLIO A BALÕES</small></span>
+    </a>
+    <nav class="links">
+      <a href="{% url 'core:index' %}#produtos">Produtos</a>
+      <a href="{% url 'core:index' %}#skins">Skins</a>
+      <a href="{% url 'core:index' %}#colecao">Coleções</a>
+      <a href="{% url 'core:index' %}#missao">Sobre</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="{% url 'core:index' %}#produtos" class="btn btn-primary btn-sm">Quero um macaco</a>
+    </div>
+    <button class="burger"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main>
+{% block content %}{% endblock %}
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="{% url 'core:index' %}" class="logo">
+          <img src="{% static 'core/images/logo-moab.png' %}" alt="Logo MOAB — Macacos de Auxílio a Balões" class="logo-img">
+          <span>MOAB<small>MACACOS DE AUXÍLIO A BALÕES</small></span>
+        </a>
+        <p>Macacos que resolvem o que ninguém pediu — mas que, no fim, todo mundo queria ter em casa.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Loja</h5>
+        <ul>
+          {% for p in footer_products %}
+          <li><a href="{% url 'core:product_detail' slug=p.slug %}">{{ p.name }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Coleções</h5>
+        <ul>
+          <li><a href="{% url 'core:index' %}#colecao">Coleção Domador</a></li>
+          <li><a href="{% url 'core:index' %}#skins">Skins Tack Zone</a></li>
+          <li><a href="{% url 'core:index' %}#produtos">Lançamentos</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Sobre a MOAB</h5>
+        <ul>
+          <li><a href="{% url 'core:index' %}#missao">Nossa missão</a></li>
+          <li><a href="#">Trabalhe conosco</a></li>
+          <li><a href="#">Imprensa</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 MOAB — Macaco de Auxílio a Balões. Todos os direitos (de bagunça) reservados.</p>
+      <div class="socials">
+        <a href="#" aria-label="Instagram">IG</a>
+        <a href="#" aria-label="TikTok">TT</a>
+        <a href="#" aria-label="YouTube">YT</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+{% block skin_data_script %}{% endblock %}
+<script src="{% static 'core/js/main.js' %}"></script>
+{% block extra_scripts %}{% endblock %}
+
+</body>
+</html>

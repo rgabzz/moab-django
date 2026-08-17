@@ -1,0 +1,241 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block title %}MOAB — Macaco de Auxílio a Balões{% endblock %}
+
+{% block content %}
+
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow">● loja oficial moab</span>
+        <h1>Um macaco pra<br>cada <em>caos</em> da<br>sua <span class="pink">casa.</span></h1>
+        <p class="lead">Estoura balão, limpa o chão, solta fogo, enche balão e ainda troca de roupa. Conheça a linha de macacos mais barulhenta (e mais fofa) que sua casa vai ter.</p>
+        <div class="hero-ctas">
+          <a href="#produtos" class="btn btn-primary">Ver produtos</a>
+          <a href="#skins" class="btn btn-outline">Escolher skin</a>
+        </div>
+        <div class="hero-stats">
+          <div><strong>{{ products|length }}</strong><span>Macacos na linha</span></div>
+          <div><strong>9+</strong><span>Skins disponíveis</span></div>
+          <div><strong>6m</strong><span>Alcance de disparo</span></div>
+        </div>
+      </div>
+      <div class="hero-art">
+        <div class="blob"></div>
+        <span class="sticker sticker-1">Diversão garantida!</span>
+        <span class="sticker sticker-2">+60cm de altura</span>
+        <span class="sticker sticker-3">insira a moeda ↓</span>
+        <img src="{% static 'core/images/domador-classico.jpg' %}" alt="Macaco Domador MOAB esmagando balão">
+      </div>
+    </div>
+  </section>
+
+  <div class="strip">
+    <div class="strip-track">
+      <span>ESTOURA BALÃO</span>
+      <span>ENCHE BALÃO</span>
+      <span>LIMPA A CASA</span>
+      <span>LANÇA FOGOS</span>
+      <span>TROCA DE SKIN</span>
+      <span>DIVERSÃO SEM FIM</span>
+      <span>ESTOURA BALÃO</span>
+      <span>ENCHE BALÃO</span>
+      <span>LIMPA A CASA</span>
+      <span>LANÇA FOGOS</span>
+      <span>TROCA DE SKIN</span>
+      <span>DIVERSÃO SEM FIM</span>
+    </div>
+  </div>
+
+  <section id="produtos">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <span class="tag">Catálogo MOAB</span>
+          <h2>Mais vendidos da selva</h2>
+        </div>
+        <p>Cada macaco resolve um problema que você nem sabia que tinha. Clique num produto pra ver os detalhes.</p>
+      </div>
+
+      <div class="grid-products">
+        {% for product in products %}
+        <a class="card" href="{% url 'core:product_detail' slug=product.slug %}">
+          <div class="card-media">
+            <span class="badge {{ product.badge_class }}">{{ product.badge }}</span>
+            <img src="{% static product.image %}" alt="{{ product.alt }}">
+          </div>
+          <div class="card-body">
+            <h3>{{ product.name }}</h3>
+            <p>{{ product.tagline }}</p>
+            <div class="card-price-row">
+              <div class="price">{{ product.price }} <small>à vista</small></div>
+              <div class="icon-btn">+</div>
+            </div>
+          </div>
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section id="skins" class="skins-section">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <span class="tag">Signature series</span>
+          <h2>Escolha a skin do seu Tack Zone X-5</h2>
+        </div>
+        <p>O mesmo robô, três personalidades. Troque a skin e mude o clima da faxina.</p>
+      </div>
+
+      <div class="skins-grid">
+        <div class="skin-stage">
+          <img src="{% static 'core/images/tackzone-zen.jpg' %}" alt="Skin Monge Zen" class="skin-img active" data-skin="zen">
+          <img src="{% static 'core/images/tackzone-sultao.jpg' %}" alt="Skin Sultão Real" class="skin-img" data-skin="sultao">
+          <img src="{% static 'core/images/tackzone-genio.jpg' %}" alt="Skin Gênio Azul" class="skin-img" data-skin="genio">
+          <div class="skin-stage-badge" id="skinBadge">skin: monge zen</div>
+        </div>
+
+        <div class="skin-info">
+          <h3 id="skinName">Monge Zen</h3>
+          <p class="desc" id="skinDesc">Aspira em silêncio, medita em movimento. Roxo e rosa, pra quem gosta de limpar com paz interior.</p>
+
+          <div class="skin-swatches">
+            <button class="swatch active" data-skin="zen">
+              <img src="{% static 'core/images/tackzone-zen.jpg' %}" alt="Miniatura skin Monge Zen">
+              <span>Monge Zen</span>
+            </button>
+            <button class="swatch" data-skin="sultao">
+              <img src="{% static 'core/images/tackzone-sultao.jpg' %}" alt="Miniatura skin Sultão Real">
+              <span>Sultão Real</span>
+            </button>
+            <button class="swatch" data-skin="genio">
+              <img src="{% static 'core/images/tackzone-genio.jpg' %}" alt="Miniatura skin Gênio Azul">
+              <span>Gênio Azul</span>
+            </button>
+          </div>
+
+          <div class="skin-specs">
+            <div><strong>360°</strong>Sucção total</div>
+            <div><strong>120min</strong>Bateria</div>
+            <div><strong>7,5cm</strong>Altura ultra fina</div>
+            <div><strong>Auto</strong>Volta pra base sozinho</div>
+          </div>
+
+          <a href="{% url 'core:product_detail' slug='tack-zone-x5' %}" class="btn btn-primary">Ver produto completo</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <span class="tag">Por que confiar num macaco</span>
+          <h2>Feito pra aguentar sua casa</h2>
+        </div>
+      </div>
+      <div class="features">
+        <div class="feature">
+          <div class="ico">🛡️</div>
+          <h4>Seguro</h4>
+          <p>Materiais atóxicos, aprovado por mães desconfiadas e por quem pisa descalço.</p>
+        </div>
+        <div class="feature">
+          <div class="ico">👆</div>
+          <h4>Fácil de usar</h4>
+          <p>Aperte o botão ou mexa o braço. Manual de instruções é só formalidade.</p>
+        </div>
+        <div class="feature">
+          <div class="ico">💪</div>
+          <h4>Resistente</h4>
+          <p>Testado contra crianças, animais de estimação e primos em festa de família.</p>
+        </div>
+        <div class="feature">
+          <div class="ico">🎉</div>
+          <h4>Diversão garantida</h4>
+          <p>Ideal pra festas, comemorações e momentos em que ninguém sabe o que fazer.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="colecao">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <span class="tag">Coleção domador</span>
+          <h2>Escolha o seu lado da bagunça</h2>
+        </div>
+        <p>Dois temperamentos, o mesmo talento pra estourar balão de verdade.</p>
+      </div>
+      <div class="collection">
+        <div class="collection-panel" style="background-image:url('{% static 'core/images/domador-classico.jpg' %}')">
+          <div class="cp-inner">
+            <span class="cp-tag">Clássico</span>
+            <h3>Macaco Domador</h3>
+            <p>O original. Cara fechada, punho pesado, +60cm de altura pura intimidação.</p>
+            <a href="{% url 'core:product_detail' slug='macaco-domador' %}" class="btn btn-outline btn-sm">Ver produto</a>
+          </div>
+        </div>
+        <div class="collection-panel" style="background-image:url('{% static 'core/images/domador-fusty.jpg' %}')">
+          <div class="cp-inner">
+            <span class="cp-tag">Edição especial</span>
+            <h3>Pat Fusty Domador</h3>
+            <p>Versão pedra, olhos de brasa, a mesma esmagada — só que com mais drama.</p>
+            <a href="{% url 'core:product_detail' slug='pat-fusty-domador' %}" class="btn btn-outline btn-sm">Ver produto</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="missao">
+    <div class="wrap">
+      <div class="mission">
+        <h2>Nosso objetivo é virar a marca de brinquedo mais <span>barulhenta e inevitável</span> de cada casa do Brasil — um macaco de cada vez.</h2>
+        <div class="mission-kr">KR 01 → fazer você sorrir lendo isso: <strong style="color:var(--yellow)">concluído ✅</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0;">
+    <div class="wrap">
+      <div class="newsletter">
+        <div>
+          <h2>Quer saber quando sai a próxima skin?</h2>
+          <p>Entra pra lista e receba fofoca de macaco em primeira mão. Sem spam, só bagunça.</p>
+        </div>
+        <form class="nl-form" onsubmit="return false;">
+          <input type="email" placeholder="seu@email.com" required>
+          <button type="submit">Quero fofoca de macaco</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+{% endblock %}
+
+{% block skin_data_script %}
+<script>
+  window.skinData = {
+    zen: {
+      name: "Monge Zen",
+      desc: "Aspira em silêncio, medita em movimento. Roxo e rosa, pra quem gosta de limpar com paz interior.",
+      badge: "skin: monge zen"
+    },
+    sultao: {
+      name: "Sultão Real",
+      desc: "Realeza que limpa embaixo do sofá. Branco e dourado, pra quem não abre mão do luxo nem na faxina.",
+      badge: "skin: sultão real"
+    },
+    genio: {
+      name: "Gênio Azul",
+      desc: "Três desejos: menos pó, menos migalha, menos pelo de gato. Todos concedidos, sem lâmpada nenhuma.",
+      badge: "skin: gênio azul"
+    }
+  };
+</script>
+{% endblock %}
