@@ -128,10 +128,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# Diretório para onde o Django vai copiar os arquivos para produção
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+# Mecanismo de armazenamento do WhiteNoise para compressão e cache
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
-
 # Email
 # https://docs.djangoproject.com/en/6.1/topics/email/#topic-email-configuration
 
